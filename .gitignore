@@ -1,0 +1,123 @@
+# ===========================================
+# Job Fair Web App - Root Level
+# Architecture: Vue.js SPA + Laravel API (Separated Frontend/Backend)
+# Auth: Laravel Sanctum (Cookie-based SPA)
+# Database: MySQL with Eloquent ORM
+# Build Tools: Vite
+# ===========================================
+
+# ===========================================
+# BACKEND (Laravel API)
+# ===========================================
+
+# Laravel Framework
+JobFairAPI/vendor/
+JobFairAPI/node_modules/
+JobFairAPI/public/build/
+JobFairAPI/public/hot
+JobFairAPI/public/storage/
+JobFairAPI/storage/*.key
+JobFairAPI/storage/pail/
+
+# Laravel Environment & Configuration
+JobFairAPI/.env
+JobFairAPI/.env.backup
+JobFairAPI/.env.production
+JobFairAPI/.env.local
+JobFairAPI/.env.*.local
+JobFairAPI/.env.testing
+JobFairAPI/auth.json
+
+# Laravel Database
+JobFairAPI/database/*.sqlite
+JobFairAPI/database/*.sqlite-journal
+
+# ===========================================
+# SHARED / GLOBAL
+# ===========================================
+
+# Package Managers - ROOT LEVEL
+vendor/
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+composer.lock
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment Files
+.env
+.env.backup
+.env.production
+.env.local
+.env.*.local
+.env.testing
+
+# IDE & Editor Files
+.fleet/
+.idea/
+.nova/
+.vscode/
+.zed/
+.phpactor.json
+*.swp
+*.swo
+*~
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary Files
+*.tmp
+*.temp
+*.cache
+
+# Backup Files
+*.bak
+*.backup
+*.old
+
+# Build & Distribution
+dist/
+build/
+coverage/
+
+# Database Files
+*.sql
+*.dump
+*.sqlite
+*.sqlite-journal
+
+# Testing
+tests/coverage/
+coverage/
+.nyc_output
+
+# Composer
+composer.phar
+
+# Development Tools
+.vagrant/
+.phpunit.xml
+laradock/
+
+# Miscellaneous
+*.tgz
+*.tar.gz
+
+# ===========================================
+# PROJECT SPECIFIC
+# ===========================================
+
+# Add any project-specific files here

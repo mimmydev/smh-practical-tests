@@ -1,0 +1,139 @@
+# ===========================================
+# Laravel API + Vue.js SPA Project
+# Architecture: Separated Frontend/Backend
+# Auth: Laravel Sanctum (Cookie-based SPA)
+# Database: MySQL with Eloquent ORM
+# Build Tools: Vite
+# ===========================================
+
+# Laravel Framework
+/vendor
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+
+# Environment & Configuration
+.env
+.env.backup
+.env.production
+.env.local
+.env.*.local
+.env.testing
+/auth.json
+
+# Logs & Cache
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+/storage/logs/*.log
+.phpunit.result.cache
+/.phpunit.cache
+
+# IDE & Editor Files
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed
+.phpactor.json
+*.swp
+*.swo
+*~
+
+# Build & Distribution
+/dist
+/build
+/coverage
+
+# Database
+/database/*.sqlite
+/database/*.sqlite-journal
+*.sql
+*.dump
+
+# Laravel Specific
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/bootstrap/cache/*.php
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/storage/app/public/*
+
+# Laravel Sanctum
+/storage/oauth-private.key
+/storage/oauth-public.key
+
+# Vite
+/public/build/*
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# Vue.js Frontend (if in same repo)
+# /frontend/dist
+# /frontend/node_modules
+# /frontend/.env.local
+# /frontend/.env.*.local
+
+# Package Managers
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.pnp
+.pnp.js
+
+# Testing
+/tests/coverage
+/coverage
+.nyc_output
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary Files
+*.tmp
+*.temp
+*.cache
+
+# Backup Files
+*.bak
+*.backup
+*.old
+
+# API Documentation
+/docs/api
+
+# Local Development
+.vagrant/
+.phpunit.xml
+/laradock
+
+# Composer
+/composer.phar
+
+# NPM/Yarn
+.npm
+.eslintcache
+
+# Miscellaneous
+*.tgz
+*.tar.gz
+
+# Custom Project Files
+/storage/debugbar
+/public/mix-manifest.json

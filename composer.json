@@ -1,0 +1,11 @@
+{
+    "require": {
+        "laravel/sanctum": "^4.2",
+        "spatie/laravel-permission": "^6.21",
+        "intervention/image": "^3.11"
+    },
+    "require-dev": {
+        "laravel/telescope": "^5.11",
+        "barryvdh/laravel-debugbar": "^3.16"
+    }
+}
