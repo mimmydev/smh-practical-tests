@@ -17,14 +17,30 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/dashboard';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
     public function boot(): void
     {
-        $this->configureRateLimiting();
+        RateLimiter::for('api', function (Request $request) {
+            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+        });
+
+        RateLimiter::for('contact', function (Request $request) {
+            return [
+                Limit::perMinute(5)->by($request->ip()),
+                Limit::perDay(20)->by($request->ip()),
+            ];
+        });
+
+        RateLimiter::for('game', function (Request $request) {
+            return [
+                Limit::perMinute(10)->by($request->ip()),
+                Limit::perDay(50)->by($request->ip()),
+            ];
+        });
 
         $this->routes(function () {
             Route::middleware('api')

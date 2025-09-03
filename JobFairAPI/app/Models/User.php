@@ -19,6 +19,7 @@ class User extends Authenticatable
         'phone',
         'profession',
         'experience_level',
+        'is_admin',
     ];
 
     protected $hidden = [
@@ -29,6 +30,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'is_admin' => 'boolean',
     ];
 
     /**
@@ -46,6 +48,39 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reservation::class)
                     ->where('session_time', '>', now())
-                    ->where('status', 'confirmed');
+                    ->where('status', 'confirmed')
+                    ->orderBy('session_time', 'asc');
+    }
+
+    /**
+     * Check if user is an admin
+     */
+    public function isAdmin(): bool
+    {
+        return $this->is_admin ?? false;
+    }
+
+    /**
+     * Scope for admin users
+     */
+    public function scopeAdmins($query)
+    {
+        return $query->where('is_admin', true);
+    }
+
+    /**
+     * Get user's experience level display name
+     */
+    public function getExperienceLevelDisplayAttribute(): string
+    {
+        return match($this->experience_level) {
+            'entry' => 'Entry Level',
+            'junior' => 'Junior Level',
+            'mid' => 'Mid Level',
+            'senior' => 'Senior Level', 
+            'lead' => 'Lead/Principal',
+            'executive' => 'Executive',
+            default => 'Not Specified'
+        };
     }
 }

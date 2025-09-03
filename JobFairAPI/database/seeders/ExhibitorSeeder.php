@@ -33,7 +33,6 @@ class ExhibitorSeeder extends Seeder
                 'status' => 'approved',
                 'booth_preferences' => ['standard']
             ],
-            // Add more sample exhibitors...
         ];
 
         foreach ($exhibitors as $exhibitor) {
