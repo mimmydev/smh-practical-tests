@@ -15,12 +15,13 @@
             >
               Learn More
             </button>
-            <button
-              @click="openExhibitorModal"
-              class="px-8 py-3 bg-blue-700 text-white rounded-lg font-semibold hover:bg-blue-800 border-2 border-blue-400 transition-colors"
-            >
-              Be Our Exhibitor
-            </button>
+            <ExhibitorRegistrationModal>
+              <button
+                class="px-8 py-3 bg-blue-700 text-white rounded-lg font-semibold hover:bg-blue-800 border-2 border-blue-400 transition-colors"
+              >
+                Be Our Exhibitor
+              </button>
+            </ExhibitorRegistrationModal>
           </div>
         </div>
       </div>
@@ -203,47 +204,13 @@
 
     <!-- Contact Form Section -->
     <ContactForm />
-
-    <!-- Exhibitor Registration Modal -->
-    <div
-      v-if="showExhibitorModal"
-      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
-    >
-      <div class="bg-white rounded-lg max-w-2xl w-full max-h-screen overflow-y-auto">
-        <div class="p-6">
-          <div class="flex justify-between items-center mb-4">
-            <h3 class="text-2xl font-bold text-gray-900">Become an Exhibitor</h3>
-            <button @click="closeExhibitorModal" class="text-gray-400 hover:text-gray-600">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M6 18L18 6M6 6l12 12"
-                ></path>
-              </svg>
-            </button>
-          </div>
-          <p class="text-gray-600 mb-6">
-            Join us as an exhibitor and connect with top talent in the tech industry.
-          </p>
-
-          <!-- Exhibitor registration form will be added here -->
-          <div class="text-center p-8 bg-gray-50 rounded-lg">
-            <p class="text-gray-500">Exhibitor registration form coming soon...</p>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import ContactForm from '@/components/ContactForm.vue'
-
-// Modal states
-const showExhibitorModal = ref(false)
+import ExhibitorRegistrationModal from '@/components/exhibitor/ExhibitorRegistrationModal.vue'
 
 // Search and filter states
 const searchQuery = ref('')
@@ -273,15 +240,6 @@ const updateCountdown = () => {
   } else {
     countdown.value = { days: 0, hours: 0, minutes: 0, seconds: 0 }
   }
-}
-
-// Modal functions
-const openExhibitorModal = () => {
-  showExhibitorModal.value = true
-}
-
-const closeExhibitorModal = () => {
-  showExhibitorModal.value = false
 }
 
 // Navigation functions
