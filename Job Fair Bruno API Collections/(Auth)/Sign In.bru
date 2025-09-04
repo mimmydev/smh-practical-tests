@@ -1,0 +1,67 @@
+meta {
+  name: Sign In
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/login
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "email": "john.doe@gmail.com",
+    "password": "Password123!"
+  }
+}
+
+vars:post-response {
+  authToken: res.body.token
+}
+
+tests {
+  test("should return 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("should contain auth token", function() {
+    expect(res.getBody()).to.have.property('token');
+    expect(res.getBody().token).to.be.a('string');
+  });
+  
+  test("should return user data", function() {
+    expect(res.getBody()).to.have.property('user');
+    expect(res.getBody().user).to.have.property('id');
+    expect(res.getBody().user).to.have.property('email');
+    expect(res.getBody().user).to.have.property('name');
+  });
+}
+
+docs {
+  # User Login
+  
+  This endpoint authenticates existing users and returns an authentication token.
+  
+  ## Required Fields
+  - `email`: User's registered email address
+  - `password`: User's password
+  
+  ## Response
+  Returns user data and authentication token on successful login.
+  The token should be used in subsequent requests requiring authentication.
+  
+  ## Usage
+  Add the returned token to the Authorization header as:
+  ```
+  Authorization: Bearer {token}
+  ```
+  
+  The token is automatically saved to the `authToken` variable for use in other requests.
+}

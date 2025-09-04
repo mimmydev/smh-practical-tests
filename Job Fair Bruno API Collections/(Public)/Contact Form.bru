@@ -1,0 +1,39 @@
+meta {
+  name: Contact Form
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/contact
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "mimmy",
+    "email": "mimmy@heee.com",
+    "phone": "+60113456623",
+    "category": "general",
+    "subject": "Test Contact Form Submission",
+    "message": "This is a test message to verify that the contact form is working properly. The message needs to be at least 10 characters long to pass validation."
+  }
+}
+
+assert {
+  res.status: eq 201
+  res.body.message: contains "Thank you"
+}
+
+tests {
+  test("Should return success message", function() {
+    expect(res.getStatus()).to.equal(201);
+    expect(res.getBody().message).to.contain("Thank you");
+  });
+  
+  test("Should return contact ID", function() {
+    expect(res.getBody().data).to.have.property("id");
+    expect(res.getBody().data).to.have.property("status");
+  });
+}
