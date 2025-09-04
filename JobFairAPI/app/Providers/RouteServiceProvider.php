@@ -52,21 +52,4 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 
-    /**
-     * Configure the rate limiters for the application.
-     */
-    protected function configureRateLimiting(): void
-    {
-        RateLimiter::for('api', function (Request $request) {
-            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
-        });
-        
-        RateLimiter::for('contact', function (Request $request) {
-            return Limit::perMinute(5)->by($request->ip());
-        });
-        
-        RateLimiter::for('game', function (Request $request) {
-            return Limit::perMinute(10)->by($request->ip());
-        });
-    }
 }

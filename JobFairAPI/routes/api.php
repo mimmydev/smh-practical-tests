@@ -31,7 +31,5 @@ Route::middleware(['throttle:game'])->group(function () {
     Route::get('/game/prizes', [GameController::class, 'prizes']);
 });
 
-// Contact form (rate limited)
-Route::middleware(['throttle:contact'])->group(function () {
-    Route::post('/contact', [ContactController::class, 'store']);
-});
+// Contact form (public access)
+Route::post('/contact', [ContactController::class, 'store']);
