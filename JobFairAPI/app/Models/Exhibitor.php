@@ -20,7 +20,8 @@ class Exhibitor extends Model
         'industry',
         'address',
         'status',
-        'booth_preferences'
+        'booth_preferences',
+        'transparency_score'
     ];
 
     protected $casts = [
@@ -41,6 +42,14 @@ class Exhibitor extends Model
     public function activeJobs(): HasMany
     {
         return $this->hasMany(Job::class)->where('is_active', true);
+    }
+
+    /**
+     * Get anonymous reports for this company
+     */
+    public function anonymousReports(): HasMany
+    {
+        return $this->hasMany(AnonymousReport::class, 'company_name', 'name');
     }
 
     /**

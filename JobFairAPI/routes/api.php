@@ -5,8 +5,8 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ExhibitorController;
 use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\ReservationController;
-use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\GameController;
+use App\Http\Controllers\Api\CompanyTransparencyController;
 
 // =============================================================================
 // PUBLIC ROUTES (No Authentication Required)
@@ -31,5 +31,9 @@ Route::middleware(['throttle:game'])->group(function () {
     Route::get('/game/prizes', [GameController::class, 'prizes']);
 });
 
-// Contact form (public access)
-Route::post('/contact', [ContactController::class, 'store']);
+
+// Company transparency and red flag reporting (public access)
+Route::get('/companies', [CompanyTransparencyController::class, 'index']);
+Route::get('/companies/{company}', [CompanyTransparencyController::class, 'show']);
+Route::post('/reports', [CompanyTransparencyController::class, 'submitReport']);
+Route::get('/reports/statistics', [CompanyTransparencyController::class, 'statistics']);
